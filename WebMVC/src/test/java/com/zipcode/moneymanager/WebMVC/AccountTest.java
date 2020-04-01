@@ -38,17 +38,28 @@ public class AccountTest {
 
     @Test
     public void withdraw() {
+        AccountData accountData = new AccountData("Khalil", "abc@gmail.com", 1000,"basic");
+        Account savingsAccount = new SavingsAccount(accountData);
+        savingsAccount.withdraw(350);
+        float expected = 650;
+        Assert.assertEquals(expected, savingsAccount.getBalance(), .01d);
     }
 
     @Test
     public void canWithdraw() {
+        AccountData accountData = new AccountData("Khalil", "abc@gmail.com", 1000,"basic");
+        Account savingsAccount = new SavingsAccount(accountData);
+        boolean actual = savingsAccount.canWithdraw(5000);
+        boolean actual2 = savingsAccount.canWithdraw(200);
+        Assert.assertFalse(actual);
+        Assert.assertTrue(actual2);
     }
 
     @Test
     public void getBalance() {
         AccountData test = new AccountData(1000, "Basic", "basic@gmail.com", 500, "basic");
         float expected = 500.00f;
-        //Account acc = new BasicAccount(test);
-        //Assert.assertEquals(expected,acc.getBalance(), 0.0);
+        Account acc = new BasicAccount(test);
+        Assert.assertEquals(expected,acc.getBalance(), 0.0);
     }
 }
