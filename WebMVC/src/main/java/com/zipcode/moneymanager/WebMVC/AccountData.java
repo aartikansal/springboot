@@ -1,21 +1,20 @@
 package com.zipcode.moneymanager.WebMVC;
 
-public class AccountData {
+
+public final class AccountData {
+
     private final int id;
-    private String name;
-    private String email;
-    private float balance;
-    private String accountType;
+    private final String name;
+    private final String email;
+    private final float balance;
+    private final String typeAccount;
 
-
-    public AccountData(){};
-
-    public AccountData(int id, String name, String email, float balance, String accountType){
+    AccountData(int id, String name, String email, float balance, String typeAccount) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.balance = balance;
-        this.accountType = accountType;
+        this.typeAccount = typeAccount;
     }
 
     public int getId() {
@@ -26,19 +25,26 @@ public class AccountData {
         return name;
     }
 
-    public float getBalance() {
-        return balance;
-    }
-
-    public String getAccountType() {
-        return accountType;
-    }
-
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email){
-        this.email = email;
+    public float getBalance() {
+        return balance;
+    }
+
+    public String getTypeAccount(){
+        return typeAccount;
+    }
+
+
+    @Override
+    public String toString() {
+        String welcomeMessage = name + ", Havak Inc. Welcomes you! \n\n" +
+                "As a prime member of our " + getTypeAccount() + " account,\n" +
+                "we wish you have wonderful day!";
+        String stringBalance = String.format("%1$.2f", balance);
+        return welcomeMessage + '\n' +'\n' +
+                "Balance: " + stringBalance;
     }
 }
