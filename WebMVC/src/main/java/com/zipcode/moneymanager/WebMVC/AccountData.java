@@ -1,6 +1,5 @@
 package com.zipcode.moneymanager.WebMVC;
 
-
 public final class AccountData {
     private static int count = 0;
     private final int id;

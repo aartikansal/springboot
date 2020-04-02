@@ -2,11 +2,7 @@ package com.zipcode.moneymanager.WebMVC;
 
 public abstract class Account {
 
-
-
-
     private AccountData accountData;
-
 
     public Account(AccountData accountData) {
         this.accountData = accountData;
@@ -22,8 +18,6 @@ public abstract class Account {
         updateBalance(getBalance() + amount);
 
     }
-
-
 
     public boolean withdraw(int amount) {
         if (canWithdraw(amount)) {
