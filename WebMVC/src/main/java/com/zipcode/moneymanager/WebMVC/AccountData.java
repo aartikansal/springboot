@@ -2,14 +2,21 @@ package com.zipcode.moneymanager.WebMVC;
 
 
 public final class AccountData {
-
+    private static int count = 0;
     private final int id;
     private final String name;
-    private final String email;
-    private final float balance;
+    private  String email;
+    private float balance;
     private final String typeAccount;
 
-    AccountData(int id, String name, String email, float balance, String typeAccount) {
+    AccountData(String name, String email, float balance, String typeAccount) {
+        this.id = ++count;
+        this.name = name;
+        this.email = email;
+        this.balance = balance;
+        this.typeAccount = typeAccount;
+    }
+    AccountData(Integer id,String name, String email, float balance, String typeAccount) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -40,4 +47,3 @@ public final class AccountData {
 
 
 }
-
