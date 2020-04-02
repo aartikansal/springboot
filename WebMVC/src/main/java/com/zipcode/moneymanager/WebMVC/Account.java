@@ -3,6 +3,8 @@ package com.zipcode.moneymanager.WebMVC;
 public abstract class Account {
 
 
+
+
     private AccountData accountData;
 
 
@@ -45,4 +47,6 @@ public abstract class Account {
         accountData = new AccountData(accountData.getId(), accountData.getName(), accountData.getEmail(),
                 newBalance, accountData.getTypeAccount());
     }
+
+
 }
