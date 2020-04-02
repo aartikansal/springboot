@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
+
     private Map<Integer, Account> accounts;
 
     public Bank(){
@@ -53,6 +54,9 @@ public class Bank {
         }
 
 
+    }
+    public Map<Integer, Account> getAccounts() {
+        return accounts;
     }
 
 
