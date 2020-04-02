@@ -35,7 +35,8 @@ public class Bank {
     }
 
     public void withdraw(Account account, Integer amount){
-        if(account.canWithdraw(amount)){
+        //overdrafts allowed up to $100
+        if(account.getBalance() - amount <= 100){
             account.withdraw(amount);
         }
     }
