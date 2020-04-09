@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class AccountTest {
 
-    @Test
+   /* @Test
     public void getAccountData() {
         AccountData expected = new AccountData("Khalil", "abc@gmail.com", 1000,"basic");
         Account acc = new BasicAccount(expected);
@@ -53,7 +53,7 @@ public class AccountTest {
         boolean actual2 = savingsAccount.canWithdraw(200);
         Assert.assertFalse(actual);
         Assert.assertTrue(actual2);
-    }
+    }*/
 
     @Test
     public void getBalance() {

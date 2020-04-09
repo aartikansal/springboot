@@ -1,62 +1,70 @@
 package com.zipcode.moneymanager.WebMVC;
 
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Bank {
 
-    private Map<Integer, Account> accounts;
+public class Bank extends DAO<AccountData> {
+    private Map<Integer, Account> savingsAccounts;
+    private Map<Integer, Account> basicAccounts;
+
 
     public Bank(){
-        accounts = new HashMap<>();
+        super();
+        basicAccounts = new HashMap<>();
+        savingsAccounts = new HashMap<>();
     }
 
-    public Bank(Map<Integer, Account> accounts){
-        this.accounts = accounts;
+    /*public Bank(Map<Integer, Account> savingsAccounts, Map<Integer, Account> basicAccounts){
+        this.savingsAccounts = savingsAccounts;
+        this.basicAccounts = basicAccounts;
+    }*/
+
+    public Bank(Connection connection) {
+        super(connection);
     }
 
-    public Account getAccountById(Integer id){
-        return accounts.get(id);
+    public Account getAccountById(Integer id, String accountType) {
+        if (accountType.equals("Regular")) {
+            return basicAccounts.get(id);
+        } else {
+            return savingsAccounts.get(id);
+        }
     }
 
-    public void deposit(AccountData accountData, float amount){
-        // get account by id, but only deposits if the email also matches
-        Account account = getAccountById(accountData.getId());
-        if(account.getAccountData().getEmail().equals(accountData.getEmail())){
+    public void deposit(Account account, float amount){
+        if(amount > 0) {
             account.deposit(amount);
         }
         else{
-            System.out.println("Email/id don't match.  Try again!");
+            System.out.println("Can not deposit a negative amount");
         }
     }
 
-    public void withdraw(AccountData accountData, Integer amount){
-        // get account by id, but only withdraws if the email matches and balance exceeds withdraw amount
-        Account account = getAccountById(accountData.getId());
-        if(account.getAccountData().getEmail().equals(accountData.getEmail()) && account.canWithdraw(amount)){
+    public void withdraw(Account account, Integer amount){
+        //overdrafts allowed up to $100
+        if(account.getBalance() - amount <= 100){
             account.withdraw(amount);
         }
+    }
+
+    public void addAccount(Account account){
+        if(account.getAccountData().getTypeAccount().equals("Regular")) {
+            basicAccounts.put(account.getAccountData().getId(), account);
+        }
         else{
-            // to be refactored
-            System.out.println("Email/id don't match or withdraw exceeds balance");
+            savingsAccounts.put(account.getAccountData().getId(), account);
         }
     }
 
-    public void addAccount(String name, String email, Integer deposit, String accountType){
-        AccountData accountdata = new AccountData(name, email, deposit, accountType);
-        if(accountType.equals("Basic")){
-        BasicAccount basicAccount = new BasicAccount(accountdata);
-        accounts.put(basicAccount.getAccountData().getId(), basicAccount);
+    public Map<Integer, Account> getAccounts(String accountType) {
+        if(accountType.equals("Regular")){
+            return basicAccounts;
         }
         else{
-            SavingsAccount savingsAccount = new SavingsAccount(accountdata);
-            accounts.put(savingsAccount.getAccountData().getId(), savingsAccount);
+            return savingsAccounts;
         }
-
-
-    }
-    public Map<Integer, Account> getAccounts() {
-        return accounts;
     }
 
 
