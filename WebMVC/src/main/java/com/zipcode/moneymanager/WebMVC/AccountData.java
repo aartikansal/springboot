@@ -4,11 +4,11 @@ public class AccountData {
     // ID, CustomerName, Email, AccountNumber, AccountType
     private static int count = 0;
     private final int id;
-    private final String name;
+    private String name;
     private  String email;
     private float balance;
     private int accountNumber;
-    private final String typeAccount;
+    private String typeAccount;
 
     AccountData(int id,String name, String email, int accountNumber, String typeAccount) {
         this.id = id;
@@ -31,6 +31,10 @@ public class AccountData {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name=name;
     }
 
     public String getEmail() {
