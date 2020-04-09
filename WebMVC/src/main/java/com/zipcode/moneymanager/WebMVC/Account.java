@@ -15,6 +15,7 @@ public  class Account extends DAO<AccountData> {
     private static final String INSERT = "INSERT INTO myNewDB.AccountData" +
             "(ID, CustomerName, Email, AccountNumber, AccountType)" +
             "VALUES(?,?,?,?,?)";
+    private static final String UPDATE = "UPDATE myNewDB.AccountData SET CustomerName = ?, Email = ?, AccountNumber = ?, AccountType = ? WHERE ID = ?";
 
     public Account(AccountData accountData) {
         this.accountData = accountData;
@@ -115,6 +116,23 @@ public  class Account extends DAO<AccountData> {
 
             ArrayList<AccountData> accDataList = findAll();
             accountData = accDataList.get(accDataList.size() - 1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return accountData;
+    }
+
+    public AccountData update(AccountData accData) {
+        AccountData accountData = null;
+        try {
+            PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(UPDATE);
+            ps.setString(1, accData.getName());
+            ps.setString(2, accData.getEmail());
+            ps.setInt(3, accData.getAccountNumber());
+            ps.setString(4, accData.getTypeAccount());
+            ps.setInt(5, accData.getId());
+            ps.executeUpdate();
+            accountData = this.findByID(accData.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }

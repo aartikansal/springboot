@@ -36,7 +36,7 @@ public class WebMvcApplication {
 
 		System.out.println("-----------------------------------------------------------");
 
-		AccountData accData = new AccountData(12, "Ankit", "ankit@gmail1.com", 9345, "Regular");
+		/*AccountData accData = new AccountData(12, "Ankit", "ankit@gmail1.com", 9345, "Regular");
 
 		account.create(accData);
 
@@ -48,8 +48,18 @@ public class WebMvcApplication {
 		System.out.println("Getting from DB, Account Number is -->"+actual.getAccountNumber());
 
 
-		System.out.println("-----------------------------------------------------------");
+		System.out.println("-----------------------------------------------------------");*/
 
+		actual = account.findByID(12);
+		actual.setName("Vince");
+		account.update(actual);
+
+		actual = account.findByID(12);
+		System.out.println("**** After update method call **** ");
+		System.out.println("Getting from DB, Name is -->"+actual.getName());
+		System.out.println("Getting from DB, Email is -->"+actual.getEmail());
+
+		System.out.println("-----------------------------------------------------------");
 
 	}
 
