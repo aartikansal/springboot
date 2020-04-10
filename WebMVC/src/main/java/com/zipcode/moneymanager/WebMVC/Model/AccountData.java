@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "CustomerData")
 
-public class AccountDataM {
+public class AccountData {
     // ID, CustomerName, Email, AccountNumber, AccountType
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,14 +21,14 @@ public class AccountDataM {
     @Column(name = "AccountType")
     private String typeAccount;
 
-    public AccountDataM(int id, String name, String email, int accountNumber, String typeAccount) {
+    public AccountData(int id, String name, String email, int accountNumber, String typeAccount) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.accountNumber = accountNumber;
         this.typeAccount = typeAccount;
     }
-    public AccountDataM(Integer id, String name, String email, float balance, String typeAccount) {
+    public AccountData(Integer id, String name, String email, float balance, String typeAccount) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -36,7 +36,7 @@ public class AccountDataM {
         this.typeAccount = typeAccount;
     }
 
-    public AccountDataM(){
+    public AccountData(){
 
     }
 
