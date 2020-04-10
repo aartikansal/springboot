@@ -10,7 +10,7 @@ public class AccountData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "name")
+    @Column(name = "CustomerName")
     private String name;
     @Column(name = "email")
     private  String email;
