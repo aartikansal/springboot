@@ -43,8 +43,8 @@ public class Bank extends DAO<AccountData> {
     }
 
     public void withdraw(Account account, Integer amount){
-        //overdrafts allowed up to $100
-        if(account.getBalance() - amount <= 100){
+        //overdrafts allowed up to $100 for bank fees
+        if(account.getBalance() - amount >= -100){
             account.withdraw(amount);
         }
     }

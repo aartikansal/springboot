@@ -1,17 +1,18 @@
 package com.zipcode.moneymanager.WebMVC;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.sql.Connection;
 import java.util.List;
 
 
-//@SpringBootApplication
+@SpringBootApplication
 public class WebMvcApplication {
 
-	/*public static void main(String[] args) {
-		SpringApplication.run(WebMvcApplication.class, args);
-	}*/
-
 	public static void main(String[] args) {
+		SpringApplication.run(WebMvcApplication.class, args);
+
 		System.out.println("Calling getConnection()...1");
 		Connection connection = ConnectionFactory.getConnection();
 		System.out.println("Calling getConnection()...2");
@@ -28,7 +29,7 @@ public class WebMvcApplication {
 		for (AccountData accData : accountData1) {
 			//System.out.println(accountData1.toString());
 			System.out.println("In the loop .... ");
-			System.out.println("Getting from DB, Name is -->"+accData.getName());
+			System.out.println("Getting from DB, Name is -->"+ accData.getName());
 			System.out.println("Getting from DB, Email is -->"+accData.getEmail());
 			System.out.println("Getting from DB, Type of account  is -->"+accData.getTypeAccount());
 			System.out.println("Getting from DB, Account Number is -->"+accData.getAccountNumber());
