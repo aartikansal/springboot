@@ -3,22 +3,22 @@ package com.zipcode.moneymanager.WebMVC.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CustomerData")
+@Table(name = "cdata")
 
 public class AccountData {
-    // ID, CustomerName, Email, AccountNumber, AccountType
+    /// ID, CustomerName, Email, AccountNumber, AccountType
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "CustomerName")
+    @Column(name = "customername")
     private String name;
     @Column(name = "email")
     private  String email;
-    @Column(name = "AccountBalance")
+    @Column(name = "accountbalance")
     private float balance;
-    @Column(name = "AccountID")
+    @Column(name = "accountid")
     private int accountNumber;
-    @Column(name = "AccountType")
+    @Column(name = "accounttype")
     private String typeAccount;
 
     public AccountData(int id, String name, String email, int accountNumber, String typeAccount) {
