@@ -1,4 +1,4 @@
-package com.zipcode.moneymanager.WebMVC.Model;
+package com.zipcode.moneymanager.WebMVC;
 
 import javax.persistence.*;
 
