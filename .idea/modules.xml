@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FullStack.MicroWebApplication-Server.iml" filepath="$PROJECT_DIR$/.idea/FullStack.MicroWebApplication-Server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WebMVC/WebMVC.iml" filepath="$PROJECT_DIR$/WebMVC/WebMVC.iml" />
     </modules>
   </component>
 </project>
