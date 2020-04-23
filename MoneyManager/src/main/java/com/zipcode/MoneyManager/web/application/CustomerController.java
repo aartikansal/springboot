@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
-@RequestMapping(value="/customers")
 public class CustomerController {
 
  private final CustomerService customerService;
@@ -22,9 +21,14 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
+    @GetMapping("/customers")
     public String getCustomers(Model model){
         List<Customer> customers = this.customerService.getCustomers();
+        System.out.println("Size of customer list in CustomerController is -->"+customers.size());
+        for(int i = 0; i < customers.size(); i++) {
+            System.out.println(customers.get(i).getFirstName());
+        }
+
         model.addAttribute("customers", customers);
         return "customers";
     }

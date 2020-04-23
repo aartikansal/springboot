@@ -34,6 +34,8 @@ public class CustomerService {
                 return o1.getLastName().compareTo(o2.getLastName());
             }
         });
+
+       System.out.println(" size of customer list is -->"+customerList.size());
         return customerList;
     }
 }

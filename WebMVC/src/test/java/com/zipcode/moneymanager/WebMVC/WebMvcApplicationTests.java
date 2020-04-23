@@ -9,5 +9,4 @@ class WebMvcApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
